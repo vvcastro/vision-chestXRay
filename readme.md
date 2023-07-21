@@ -1,12 +1,12 @@
 # X-Ray Image classification 👋🏻
 
-In this repository I explored some ideas for the classification of chest X-Ray images. The idea is to move from simpler ML approaches to more complex _SOTA_ models.
+This is an extension of the project developed for the course "Applied AI for Biomedicine" were we explored the challenges of AI for medical applications. The idea is to explore beyond the basic ideas discussed during the course, reaching to _SOTA_ models or techniques.
 
-Specifically, the problem to tackle is the classification of chest X-Ray images from patients with **_Tuberculosis_**, **_Pneumonia_** and no-disease ( **_Normal_** ).
+The problem to tackle is the classification of chest X-Ray images from patients with **_Tuberculosis_**, **_Pneumonia_** and without diseases ( **_Normal_** ). The dataset contains several particularities or abnormalities like _inverted images_ and different types/levels of _noise_.
 
----
+## Outline 🧵
 
-This repo contains:
+This code is structured as follow:
 
 1. Dataset Outlook and Analysis 📊
 2. Traditional ML approaches
@@ -19,3 +19,5 @@ This repo contains:
    - Transfer Learning ( ImageNet and ChestXpert )
    - Transformers
 4. XAI improvements 👩🏻‍🏫
+
+There will be a report summarising all the activities performed.
