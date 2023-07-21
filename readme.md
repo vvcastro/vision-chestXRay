@@ -1,17 +1,21 @@
-# ML methods for X-Ray Image classification
+# X-Ray Image classification 👋🏻
 
-This repository contains a further development of a course project on "AI for Biomedicine". The idea is to start from the same base problem and take the analysis into a bit more complex solutions, also exploring why some of them work better/worse.
+In this repository I explored some ideas for the classification of chest X-Ray images. The idea is to move from simpler ML approaches to more complex _SOTA_ models.
 
-Specifically, this repo contains:
+Specifically, the problem to tackle is the classification of chest X-Ray images from patients with **_Tuberculosis_**, **_Pneumonia_** and no-disease ( **_Normal_** ).
 
-1. Dataset Outlook and Analysis
+---
+
+This repo contains:
+
+1. Dataset Outlook and Analysis 📊
 2. Traditional ML approaches
    - Image preprocessing
    - Feature extraction
    - Model development ( mostly SVM )
-3. Deep Learning Approaches.
+3. Deep Learning Approaches 🤖
    - Image preprocessing ( if needed )
    - Baseline approach
    - Transfer Learning ( ImageNet and ChestXpert )
    - Transformers
-4. XAI improvements.
+4. XAI improvements 👩🏻‍🏫
