@@ -1,6 +1,8 @@
+.vscode
 __pycache__/
 .DS_Store
 .ipynb_checkpoints
 *.zip
 
 data/
+testing/best_model
