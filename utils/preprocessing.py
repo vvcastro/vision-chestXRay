@@ -67,9 +67,10 @@ class DataProcessor:
         img_dim = self.image_size[0]
         self.noise_ksize = (3, 3) if img_dim <= 256 else (7, 7)
 
-        dir_name = self.data_dir.split(os.sep)[-1]
-        self.output_path = self.data_dir.replace(dir_name, self.dir_id)
-        os.makedirs( self.output_path, exist_ok=True )
+        dir_name = os.sep.join( self.data_dir.split(os.sep)[:-1] )
+        self.output_path = os.path.join( dir_name, 'subsets', self.dir_id)
+        if ( self.dir_id != 'test' ):
+            os.makedirs( self.output_path, exist_ok=True )
 
     def read_image( self, image_name: str):
         """ Read the image and resize is to the set size. """

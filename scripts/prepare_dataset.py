@@ -16,12 +16,12 @@ from utils.preprocessing import DataProcessor
 # 8 relevant 
 sizes = {
     'small': (128, 128),
-    'medium': (256, 256),
+    'medium': (224, 224),
 }
 
-noisy = {
-    'with_noise': True,
-    'without_noise': False
+cancel_noise = {
+    'without_noise': True,
+    'with_noise': False,
 }
 
 to_invert = {
@@ -31,25 +31,17 @@ to_invert = {
 
 settings = []
 for img_size in sizes:
-    for noise_type in noisy:
+    for noise_type in cancel_noise:
             for invert_type in to_invert:
                 this_settings = {
                     'id': f"{img_size}_{noise_type}_{invert_type}",
                     'image_size': sizes[img_size],
-                    'noise': noisy[noise_type],
+                    'noise': cancel_noise[noise_type],
                     'invert': to_invert[invert_type],
                     'sharpening': True
                 }
                 settings.append( this_settings )
 
-# additional we add one with big images
-settings.append({
-    'id': "big_without_noise_inverted",
-    'image_size': (512, 512),
-    'noise': True,
-    'invert': True,
-    'sharpening': True
-})
 
 ###########################
 # 1. Apply the preprocessing over all the dataset

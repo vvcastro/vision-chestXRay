@@ -1,10 +1,8 @@
-from skimage.feature import local_binary_pattern, hog, graycomatrix, graycoprops
-from skimage.measure import moments_central, moments_normalized
+from skimage.feature import local_binary_pattern, graycomatrix, graycoprops
 from skimage import filters, morphology
 from scipy import stats
 import numpy as np
 import cv2
-
 
 def compute_binary_img(image):
     """ Computes the binary [0 and 1] of the image, showing the contours and closing some imperfections. """
@@ -78,13 +76,6 @@ def extract_local_binary_patterns(image, num_points=24, radius=3):
     return hist
 
 
-def extract_histogram_of_oriented_gradients(image, num_bins=9):
-    """ It selects a cell size depending on the image_size and compute the HOG"""
-    ksize = 24 if image.shape[0] <= 256 else 32
-    hog_features = hog(image, orientations=num_bins, pixels_per_cell=(ksize, ksize), cells_per_block=(1, 1))
-    return hog_features
-
-
 def extract_haralick_features(image, num_angles=8):
     """ Calculates the gray co-occurence matrix of the image. From the co-matrix, calculates the
         relevant features.
@@ -104,7 +95,6 @@ functions = {
     'gabor': extract_gabor_features,
     'stats': extract_basic_intensity_statistics,
     'lbp': extract_local_binary_patterns,
-    'hog': extract_histogram_of_oriented_gradients,
     'haralick': extract_haralick_features,
 }
 
@@ -119,7 +109,7 @@ class DataFeatures:
         # group features
         self.geo_features = ['hu_bin', 'fourier_real', 'fourier_imag']
         self.int_features = ['gabor', 'stats']
-        self.tex_features = ['lbp', 'hog', 'haralick']
+        self.tex_features = ['lbp', 'haralick']
         self.all_features = self.geo_features + self.int_features + self.tex_features
 
     def extract_features( self, image ):
@@ -128,5 +118,4 @@ class DataFeatures:
         extracted_features['fourier_real'] = np.real( extracted_features['fourier'] )
         extracted_features['fourier_imag'] = np.imag( extracted_features['fourier'] )
         extracted_features.pop('fourier')
-
         return extracted_features
